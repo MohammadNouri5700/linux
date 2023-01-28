@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Texas Instruments Incorporated    - http://www.ti.com/
+ * Copyright (C) 2012 Texas Instruments Incorporated - http://www.ti.com/
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -144,6 +144,12 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&wlan_pins &phy_reset_pins_default &ec20_reset_pins_default>;
 
+	dcan1_pins_default: pinmux_dcan1_pins_default {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x96c, PIN_INPUT | MUX_MODE2) /* (E17) uart0_rtsn.dcan1_rx */
+			AM33XX_IOPAD(0x968, PIN_OUTPUT | MUX_MODE2) /* (E18) uart0_ctsn.dcan1_tx */
+		>;
+	};
 	
 	leds_pins: pinmux_leds_pins {
 		pinctrl-single,pins = <
@@ -413,6 +419,23 @@
 			0x100 (PIN_INPUT_PULLDOWN | MUX_MODE7)
 			0x104 (PIN_INPUT_PULLDOWN | MUX_MODE7)
 			0x1AC (PIN_INPUT_PULLDOWN | MUX_MODE7)
+		>;
+	};
+
+	emmc_pins: pinmux_emmc {
+		pinctrl-single,pins = <
+			0x80 (PIN_INPUT_PULLUP | MUX_MODE2)	/* gpmc_csn1.mmc1_clk */
+			0x84 (PIN_INPUT_PULLUP | MUX_MODE2)	/* gpmc_csn2.mmc1_cmd */
+			0x00 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad0.mmc1_dat0 */
+			0x04 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad1.mmc1_dat1 */
+			0x08 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad2.mmc1_dat2 */
+			0x0c (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad3.mmc1_dat3 */
+			0x10 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad4.mmc1_dat4 */
+			0x14 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad5.mmc1_dat5 */
+			0x18 (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad6.mmc1_dat6 */
+			0x1c (PIN_INPUT_PULLUP | MUX_MODE1)	/* gpmc_ad7.mmc1_dat7 */
+			/* EMMC nReset */
+			0x1a0 (PIN_OUTPUT_PULLUP | MUX_MODE7)	/* gpmc_wpn.gpio3_18 */
 		>;
 	};
 
@@ -849,26 +872,18 @@
 };
 
 
+
+
+
 &mac {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&cpsw_default>;
-	pinctrl-1 = <&cpsw_sleep>;
 	slaves = <2>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&cpsw_default>;
+	//pinctrl-1 = <&cpsw_sleep>;
 	dual_emac = <1>;
+//	active_slave = <1>;
 	status = "okay";
 };
-
-
-
-// &mac {
-// 	slaves = <2>;
-// 	pinctrl-names = "default";
-// 	pinctrl-0 = <&cpsw_default>;
-// 	//pinctrl-1 = <&cpsw_sleep>;
-// 	dual_emac = <1>;
-// //	active_slave = <1>;
-// 	status = "okay";
-// };
 
 &davinci_mdio {
 	pinctrl-names = "default", "sleep";
@@ -881,6 +896,7 @@
        status="okay";
        ti,no-reset-on-init;
     };
+
 
 &cpsw_emac0 {
 	phy_id = <&davinci_mdio>, <0>;
@@ -901,6 +917,25 @@
     	full-duplex;
     };
 };
+
+
+// &cpsw_emac0 {
+// 	phy-mode = "rgmii-rxid";
+// 	dual_emac_res_vlan=<1>;
+// 	fixed-link {
+//     	speed = <1000>;
+//     	full-duplex;
+//     };
+// };
+
+// &cpsw_emac1 {
+// 	phy-mode = "rgmii-rxid";
+// 	dual_emac_res_vlan=<2>;
+// 	fixed-link {
+//     	speed = <1000>;
+//     	full-duplex;
+//     };
+// };
 
 &tscadc {
 	status = "okay";
@@ -925,6 +960,16 @@
 	pinctrl-0 = <&mmc1_pins_default>;
 	pinctrl-1 = <&mmc1_pins_sleep>;
 	cd-gpios = <&gpio3 21 GPIO_ACTIVE_HIGH>;
+};
+
+&mmc2 {
+	/* eMMC (not populated) on MMC #2 */
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&emmc_pins>;
+	vmmc-supply = <&ldo4_reg>;
+	bus-width = <8>;
+	ti,non-removable;
 };
 
 &mmc3 {
@@ -963,7 +1008,11 @@
 	ti,scale-data-fw = "am335x-evm-scale-data.bin";
 };
 
-
+&dcan1 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&dcan1_pins_default>;
+};
 
 &sgx {
 	status = "disabled";
