@@ -900,22 +900,22 @@
 
 &cpsw_emac0 {
 	phy_id = <&davinci_mdio>, <0>;
-	phy-mode = "rgmii-txid";
+	phy-mode = "rgmii-rxid";
 	dual_emac_res_vlan=<1>;
-	// fixed-link {
-    // 	speed = <1000>;
-    // 	full-duplex;
-    // };
+	fixed-link {
+    	speed = <1000>;
+    	full-duplex;
+    };
 };
 
 &cpsw_emac1 {
 	phy_id = <&davinci_mdio>, <1>;
-	phy-mode = "rgmii-txid";
+	phy-mode = "rgmii-rxid";
 	dual_emac_res_vlan=<2>;
-	// fixed-link {
-    // 	speed = <1000>;
-    // 	full-duplex;
-    // };
+	fixed-link {
+    	speed = <1000>;
+    	full-duplex;
+    };
 };
 
 
