@@ -882,9 +882,9 @@
 };
 
 &davinci_mdio {
-	pinctrl-names = "default", "sleep";
+	pinctrl-names = "default";
 	pinctrl-0 = <&davinci_mdio_default>;
-	pinctrl-1 = <&davinci_mdio_sleep>;
+	//pinctrl-1 = <&davinci_mdio_sleep>;
 	status = "disabled";
 };
 
@@ -907,7 +907,8 @@
 // };
 
 &cpsw_emac0 {
-	phy-mode = "rgmii-rxid";
+	phy_id = <&davinci_mdio>, <0>;
+	phy-mode = "rgmii-txid";
 	dual_emac_res_vlan=<1>;
 	fixed-link {
     	speed = <1000>;
@@ -916,7 +917,8 @@
 };
 
 &cpsw_emac1 {
-	phy-mode = "rgmii-rxid";
+	phy_id = <&davinci_mdio>, <1>;
+	phy-mode = "rgmii-txid";
 	dual_emac_res_vlan=<2>;
 	fixed-link {
     	speed = <1000>;
