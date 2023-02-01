@@ -872,21 +872,21 @@
 };
 
 
-&mac {
-	pinctrl-names = "default";
-	pinctrl-0 = <&cpsw_default>;
-	//pinctrl-1 = <&cpsw_sleep>;
-	slaves = <2>;
-	dual_emac = <1>;
-	status = "okay";
-};
+// &mac {
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&cpsw_default>;
+// 	//pinctrl-1 = <&cpsw_sleep>;
+// 	slaves = <2>;
+// 	dual_emac = <1>;
+// 	status = "okay";
+// };
 
-&davinci_mdio {
-	pinctrl-names = "default";
-	pinctrl-0 = <&davinci_mdio_default>;
-	//pinctrl-1 = <&davinci_mdio_sleep>;
-	status = "disabled";
-};
+// &davinci_mdio {
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&davinci_mdio_default>;
+// 	//pinctrl-1 = <&davinci_mdio_sleep>;
+// 	status = "disabled";
+// };
 
 &gpio0 {
        status="okay";
@@ -906,15 +906,47 @@
 // 	dual_emac_res_vlan=<2>;
 // };
 
-&cpsw_emac0 {
-	phy-mode = "rgmii-rxid";
-	dual_emac_res_vlan=<1>;
+// &cpsw_emac0 {
+// 	phy-mode = "rgmii-rxid";
+// 	dual_emac_res_vlan=<1>;
+// };
+
+// &cpsw_emac1 {
+// 	phy-mode = "rgmii-rxid";
+// 	dual_emac_res_vlan=<2>;
+// };
+&mac {	
+	slaves = <2>;	
+	pinctrl-names = "default", "sleep";	
+	pinctrl-0 = <&cpsw_default>;	
+	pinctrl-1 = <&cpsw_sleep>;	
+	dual_emac = <1>;	
+//	active_slave = <1>;	
+	status = "okay";	
+};	
+&davinci_mdio {	
+	pinctrl-names = "default", "sleep";	
+	pinctrl-0 = <&davinci_mdio_default>;	
+	pinctrl-1 = <&davinci_mdio_sleep>;	
+	status = "okay";	
+};	
+&gpio0 {	
+       status="okay";	
+       ti,no-reset-on-init;	
+    };	
+&cpsw_emac0 {	
+	phy_id = <&davinci_mdio>, <0>;	
+	phy-mode = "rgmii-txid";	
+	phy-reset-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;	
+//	dual_emac_res_vlan=<0>;	
+};	
+&cpsw_emac1 {	
+	phy_id = <&davinci_mdio>, <1>;	
+	phy-mode = "rgmii-txid";	
+	phy-reset-gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;	
+//	dual_emac_res_vlan=<1>;	
 };
 
-&cpsw_emac1 {
-	phy-mode = "rgmii-rxid";
-	dual_emac_res_vlan=<2>;
-};
 
 &tscadc {
 	status = "okay";
