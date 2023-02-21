@@ -144,6 +144,22 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&wlan_pins &phy_reset_pins_default &ec20_reset_pins_default>;
 
+	uart5_pins_default: uart5_pins_default {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x8c4, PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
+			AM33XX_IOPAD(0x8c0, PIN_OUTPUT | MUX_MODE4) /* (U1) lcd_data8.uart5_txd */
+		>;
+	};
+
+	/* Optional sleep pin settings. Must manually enter values in the below skeleton. */
+	myuart5_pins_sleep: myuart5_pins_sleep {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x8c4,  ) /* (U2) lcd_data9.uart5_rxd */
+			AM33XX_IOPAD(0x8c0,  ) /* (U1) lcd_data8.uart5_txd */
+		>;
+	};
+
+
 	dcan1_pins_default: pinmux_dcan1_pins_default {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x96c, PIN_INPUT | MUX_MODE2) /* (E17) uart0_rtsn.dcan1_rx */
@@ -250,19 +266,19 @@
 		>;
 	};
 	
-	uart5_pins_default: uart5_pins_default {
-		pinctrl-single,pins = <
-			0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
-			0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
+	// uart5_pins_default: uart5_pins_default {
+	// 	pinctrl-single,pins = <
+	// 		0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
+	// 		0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
 			
-		>;
-	};
-	uart5_pins_sleep: uart5_pins_sleep {
-		pinctrl-single,pins = <
-			0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
-			0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
-		>;
-	};
+	// 	>;
+	// };
+	// uart5_pins_sleep: uart5_pins_sleep {
+	// 	pinctrl-single,pins = <
+	// 		0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
+	// 		0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
+	// 	>;
+	// };
 
 
 	nandflash_pins_default: nandflash_pins_default {
@@ -598,9 +614,8 @@
 	status = "okay";
 };
 &uart5 {
-	pinctrl-names = "default", "sleep";
+	pinctrl-names = "default";
 	pinctrl-0 = <&uart5_pins_default>;
-	pinctrl-1 = <&uart5_pins_sleep>;
 
 	status = "okay";
 };
