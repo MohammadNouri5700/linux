@@ -244,16 +244,16 @@
 
 	uart4_pins_sleep: uart4_pins_sleep {
 		pinctrl-single,pins = <
-			0x5A4 ( PIN_INPUT_PULLDOWN | MUX_MODE6 ) /* (T17) uart4_ctsn.uart4_rxd */
-			0x5A0 ( PIN_INPUT_PULLDOWN | MUX_MODE6 ) /* (U17) uart4_rtsn.uart4_txd */
+			0x70 ( PIN_INPUT_PULLDOWN | MUX_MODE6 ) /* (T17) uart4_ctsn.uart4_rxd */
+			0x74 ( PIN_INPUT_PULLDOWN | MUX_MODE6 ) /* (U17) uart4_rtsn.uart4_txd */
 			0x78 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)   /* (U18) gmii1_rxdv.GPIO1_28 */
 		>;
 	};
 	
 	uart5_pins_default: uart5_pins_default {
 		pinctrl-single,pins = <
-			0xc0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
-			0xc4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
+			0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
+			0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
 			0xd4 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)     /* (V3) GPIO0_9 */
 		>;
 	};
