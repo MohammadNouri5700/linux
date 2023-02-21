@@ -152,12 +152,6 @@
 	};
 
 	/* Optional sleep pin settings. Must manually enter values in the below skeleton. */
-	myuart5_pins_sleep: myuart5_pins_sleep {
-		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x8c4,  ) /* (U2) lcd_data9.uart5_rxd */
-			AM33XX_IOPAD(0x8c0,  ) /* (U1) lcd_data8.uart5_txd */
-		>;
-	};
 
 
 	dcan1_pins_default: pinmux_dcan1_pins_default {
