@@ -254,14 +254,13 @@
 		pinctrl-single,pins = <
 			0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
 			0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
-			0xd4 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)     /* (V3) GPIO0_9 */
+			
 		>;
 	};
 	uart5_pins_sleep: uart5_pins_sleep {
 		pinctrl-single,pins = <
-			0xc0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_rxd */
-			0xc4 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U2) uart5_rx.uart5_txd  */
-			0xd4 (PIN_OUTPUT_PULLDOWN | MUX_MODE7)     /* (V3) GPIO0_9 */
+			0x5A0 (PIN_INPUT_PULLDOWN  | MUX_MODE4)	   /*(U1) uart5_tx.uart5_txd */
+			0x5A4 (PIN_OUTPUT_PULLUP   | MUX_MODE4)	   /*(U2) uart5_rx.uart5_rxd  */
 		>;
 	};
 
@@ -602,10 +601,7 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&uart5_pins_default>;
 	pinctrl-1 = <&uart5_pins_sleep>;
-	linux,rs485-enabled-at-boot-time;
-	rs485-rts-delay = <0 0>; // <a b> a for start of packet, b end of packet in milliseconds
-	rs485-rts-active-high; // sets rts active high
-	rts-gpio = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+
 	status = "okay";
 };
 
