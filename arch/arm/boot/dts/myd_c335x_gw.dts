@@ -146,8 +146,8 @@
 
 	uart5_pins_default: uart5_pins_default {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x8c0 , PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
-			AM33XX_IOPAD(0x8c4 , PIN_OUTPUT | MUX_MODE4) /* (U1) lcd_data8.uart5_txd */
+			AM33XX_IOPAD( 0x8c4 , PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
+			AM33XX_IOPAD( 0x8c0 , PIN_OUTPUT | MUX_MODE4) /* (U1) lcd_data8.uart5_txd */
 		>;
 	};
 

@@ -477,7 +477,7 @@ static struct omap_hwmod_ocp_if am33xx_l4_wkup__timer1 = {
 /* l4 wkup -> uart1 */
 static struct omap_hwmod_ocp_if am33xx_l4_wkup__uart1 = {
 	.master		= &am33xx_l4_wkup_hwmod,
-	.slave		= &am33xx_uart1_hwmod,
+	.slave		= &am33xx_uart5_hwmod,
 	.clk		= "dpll_core_m4_div2_ck",
 	.user		= OCP_USER_MPU,
 };
