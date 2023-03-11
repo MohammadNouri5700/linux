@@ -947,7 +947,7 @@
 };
 
 &cpsw_emac1 {
-	phy_id = <&davinci_mdio>, <6>;
+	phy_id = <&davinci_mdio>, <1>;
 	phy-mode = "rgmii-txid";
 	phy-reset-gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
 //	dual_emac_res_vlan=<1>;
