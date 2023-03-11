@@ -940,14 +940,14 @@
        ti,no-reset-on-init;	
     };	
 &cpsw_emac0 {
-	phy_id = <&davinci_mdio>, <0>;
+	phy_id = <&davinci_mdio>, <1>;
 	phy-mode = "rgmii-txid";
 	phy-reset-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
 //	dual_emac_res_vlan=<0>;
 };
 
 &cpsw_emac1 {
-	phy_id = <&davinci_mdio>, <1>;
+	phy_id = <&davinci_mdio>, <0>;
 	phy-mode = "rgmii-txid";
 	phy-reset-gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
 //	dual_emac_res_vlan=<1>;
