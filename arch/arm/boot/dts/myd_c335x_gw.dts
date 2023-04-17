@@ -925,8 +925,8 @@
 	pinctrl-names = "default", "sleep";	
 	pinctrl-0 = <&cpsw_default>;	
 	pinctrl-1 = <&cpsw_sleep>;	
-	dual_emac = <1>;	
-//	active_slave = <1>;	
+	dual_emac;	
+	active_slave = <2>;	
 	status = "okay";	
 };	
 &davinci_mdio {	
@@ -940,17 +940,17 @@
        ti,no-reset-on-init;	
     };	
 &cpsw_emac0 {
-	phy_id = <&davinci_mdio>, <1>;
+	phy_id = <&davinci_mdio>, <6>;
 	phy-mode = "rgmii-txid";
 	phy-reset-gpios = <&gpio0 27 GPIO_ACTIVE_HIGH>;
-//	dual_emac_res_vlan=<0>;
+	dual_emac_res_vlan=<0>;
 };
 
 &cpsw_emac1 {
 	phy_id = <&davinci_mdio>, <0>;
 	phy-mode = "rgmii-txid";
 	phy-reset-gpios = <&gpio0 26 GPIO_ACTIVE_HIGH>;
-//	dual_emac_res_vlan=<1>;
+	dual_emac_res_vlan=<1>;
 };
 
 
