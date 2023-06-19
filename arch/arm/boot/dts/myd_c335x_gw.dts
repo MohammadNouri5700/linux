@@ -144,6 +144,23 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&wlan_pins &phy_reset_pins_default &ec20_reset_pins_default>;
 
+
+	myi2c2_pins_default: myi2c2_pins_default {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x954, PIN_INPUT | MUX_MODE2) /* (B17) spi0_d0.I2C2_SCL */
+			AM33XX_IOPAD(0x950, PIN_INPUT | MUX_MODE2) /* (A17) spi0_sclk.I2C2_SDA */
+		>;
+	};
+
+	/* Optional sleep pin settings. Must manually enter values in the below skeleton. */
+	myi2c2_pins_sleep: myi2c2_pins_sleep {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x954,  ) /* (B17) spi0_d0.I2C2_SCL */
+			AM33XX_IOPAD(0x950,  ) /* (A17) spi0_sclk.I2C2_SDA */
+		>;
+	};
+
+	
 	uart5_pins_default: uart5_pins_default {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD( 0x8c4 , PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
@@ -555,12 +572,12 @@
 			0x21c ( PIN_OUTPUT_PULLDOWN | MUX_MODE7 ) /* (F16) USB0_DRVVBUS.gpio0[18] */
 		>;
 	};
-	ft5x0x_pins_default: ft5x0x_pins_default {
-		pinctrl-single,pins = <
-		0x154 ( PIN_INPUT_PULLDOWN | MUX_MODE7 ) /* (B17) spi0_d0.gpio0[3] */
-		0x1a8 ( PIN_INPUT_PULLDOWN | MUX_MODE7 ) /* (D13) mcasp0_axr1.gpio3[20] */
-		>;
-	};
+	// ft5x0x_pins_default: ft5x0x_pins_default {
+	// 	pinctrl-single,pins = <
+	// 	0x154 ( PIN_INPUT_PULLDOWN | MUX_MODE7 ) /* (B17) spi0_d0.gpio0[3] */
+	// 	0x1a8 ( PIN_INPUT_PULLDOWN | MUX_MODE7 ) /* (D13) mcasp0_axr1.gpio3[20] */
+	// 	>;
+	// };
 	
 		
 };
