@@ -147,16 +147,16 @@
 
 	myi2c2_pins_default: myi2c2_pins_default {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x954, PIN_INPUT | MUX_MODE2) /* (B17) spi0_d0.I2C2_SCL */
-			AM33XX_IOPAD(0x950, PIN_INPUT | MUX_MODE2) /* (A17) spi0_sclk.I2C2_SDA */
+			AM33XX_IOPAD(0x154, PIN_INPUT | MUX_MODE2) /* (B17) spi0_d0.I2C2_SCL */
+			AM33XX_IOPAD(0x150, PIN_INPUT | MUX_MODE2) /* (A17) spi0_sclk.I2C2_SDA */
 		>;
 	};
 
 	/* Optional sleep pin settings. Must manually enter values in the below skeleton. */
 	myi2c2_pins_sleep: myi2c2_pins_sleep {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x954,  ) /* (B17) spi0_d0.I2C2_SCL */
-			AM33XX_IOPAD(0x950,  ) /* (A17) spi0_sclk.I2C2_SDA */
+			AM33XX_IOPAD(0x154,  ) /* (B17) spi0_d0.I2C2_SCL */
+			AM33XX_IOPAD(0x150,  ) /* (A17) spi0_sclk.I2C2_SDA */
 		>;
 	};
 
