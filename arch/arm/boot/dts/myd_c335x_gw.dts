@@ -663,7 +663,7 @@
 	pinctrl-0 = <&myi2c2_pins_default>;
 
 	status = "okay";
-	clock-frequency = <400000>;
+	clock-frequency = <100000>;
 };
 
 
