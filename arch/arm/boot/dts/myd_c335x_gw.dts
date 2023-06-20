@@ -658,6 +658,14 @@
     };
 
 };
+&i2c2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&myi2c2_pins_default>;
+
+	status = "okay";
+	clock-frequency = <400000>;
+};
+
 
 &usb {
 	status = "okay";
